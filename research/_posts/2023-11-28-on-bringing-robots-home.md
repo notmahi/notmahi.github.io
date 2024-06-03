@@ -12,7 +12,7 @@ project_site_url: https://dobb-e.com/
 show_blog_link: false
 show_card: true
 highlight: "Best Demo Finalist"
-venue: "International Conference in Robotics and Automation (ICRA) 2024"
+venue: "International Conference in Robotics and Automation (ICRA) EXPO 2024"
 local_video: assets/images/research/dobb-e-thumbnail.mp4
 ---
 

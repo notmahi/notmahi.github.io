@@ -1,5 +1,5 @@
----
----
+--- 
+--- 
 @import url('https://unpkg.com/primer/build/build.css');
 @import 'highlight-syntax';
 
@@ -55,6 +55,39 @@
   }
 }
 
+mark {
+  color: white;
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.8em 0.3em;
+  background: transparent;
+  background-image: linear-gradient(to right,
+      rgba(255, 225, 0, 0.2),
+      rgba(255, 225, 0, 0.5) 14%,
+      rgba(255, 225, 0, 0.3));
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: -0.15em 0.15em 0.25em rgba(255, 225, 0, 0.1);
+  // , .5em -.25em 0.6em rgba(255, 255, 255,1), 0.5em -.25em 1.5em rgba(255, 255, 255,1);
+}
+
+
+.green {
+  color: white;
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.8em 0.3em;
+  background: transparent;
+  background-image: linear-gradient(to right,
+      rgba(130, 255, 173, 0.2),
+      rgba(130, 255, 173, 0.5) 14%,
+      rgba(130, 255, 173, 0.3));
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: -0.15em 0.15em 0.25em rgba(130, 255, 173, 0.1);
+  // , .5em -.25em 0.6em rgba(255, 255, 255,1), 0.5em -.25em 1.5em rgba(255, 255, 255,1);
+}
+
 .min-height-full {
   min-height: 100vh;
 }
@@ -85,20 +118,21 @@ h1 {
 }
 
 // pill-colors:
-// behavior-cloning-algorithms: #FFBF00
+// supervised-policy-learning: #FFBF00
 // home-robots: #C3B93D
 // open-vocab-robots: #87B37A
 
-.topic-pill-behavior-cloning-algorithms {
+.topic-pill-supervised-policy-learning {
   background-color: #CE8147;
   border-color: #CE8147;
 }
-.topic-pill-open-vocab-robotics {
+
+.topic-pill-semantic-scene-representation {
   background-color: #A5BE00;
   border-color: #A5BE00;
 }
 
-.topic-pill-home-robotics {
+.topic-pill-generalization-home-robotics {
   background-color: #87B37A;
   border-color: #87B37A;
 }

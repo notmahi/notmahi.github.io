@@ -2,7 +2,7 @@
 date: 2022-10-19 20:00:00
 layout: research 
 tags: play data, transformers, behavior transformers, real robot experiments, play kitchen
-pills: behavior-cloning-algorithms
+pills: supervised-policy-learning
 description: Play to Policy
 title: "From Play to Policy: Conditional Behavior Generation from Uncurated Robot Data"
 authors: "Zichen Jeff Cui, Yibin Wang, Nur Muhammad (Mahi) Shafiullah, Lerrel Pinto"

@@ -2,7 +2,7 @@
 date: 2022-10-19 20:00:00
 layout: research 
 tags: real robots, real home, imitation learning, home robotics, learning from demonstration, robotics dataset,  robot foundational model
-pills: home-robotics, behavior-cloning-algorithms, visual-representation-learning
+pills: generalization-home-robotics, supervised-policy-learning, visual-representation-learning
 description: On Bringing Robots Home
 title: "On Bringing Robots Home"
 authors: "Nur Muhammad (Mahi) Shafiullah, Anant Rai, Haritheja Etukuru, Yiqian Liu, Ishan Misra, Soumith Chintala, Lerrel Pinto"

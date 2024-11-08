@@ -4,12 +4,40 @@
 {% assign metadata_styles = 'd-flex flex-items-center mb-3' %}
 {% endif %}
 
-<picture>
-  <img decoding="async" src="/assets/images/self/mahi_profile_comp_small.jpg" class="mb-3" style="max-width: 300px;"
-    alt="A professional headshot photo of Nur Muhammad Mahi Shafiullah">
-  <source srcSet="/assets/images/self/mahi_profile_comp_small.avif" type="image/avif" class="mb-3"
+<picture id="headshot-image">
+  <img decoding="async" id="headshot_jpg" src="/assets/images/self/mahi_profile_comp_small.jpg" class="mb-3"
+    style="max-width: 300px;" alt="A professional headshot photo of Nur Muhammad Mahi Shafiullah">
+  <source id="headshot_avif" srcSet="/assets/images/self/mahi_profile_comp_small.avif" type="image/avif" class="mb-3"
     style="max-width: 300px;" />
 </picture>
+<script>
+  var primarySrc = '/assets/images/self/mahi_profile_comp_small.jpg';
+  var secondarySrc = '/assets/images/self/mahi_profile_comp_small.avif';
+
+  var primarySrcFunny = '/assets/images/self/mahi-with-robot.jpg';
+  var secondarySrcFunny = '/assets/images/self/mahi-with-robot.avif';
+  // On hover, change the headshot image to the funny version.
+  document.getElementById('headshot-image').addEventListener('mouseenter', function () {
+    // Wait for a second.
+    setTimeout(function () {
+      // Make sure user is still hovering
+      if (document.getElementById('headshot-image').matches(':hover')) {
+        document.getElementById('headshot_jpg').src = primarySrcFunny;
+        document.getElementById('headshot_avif').src = secondarySrcFunny;
+      }
+    }, 1000);
+  });
+  // On mouseout, change the headshot image back to the professional version.
+  document.getElementById('headshot-image').addEventListener('mouseleave', function () {
+    document.getElementById('headshot_jpg').src = primarySrc;
+    document.getElementById('headshot_avif').src = secondarySrc;
+  });
+  // On click, always change the headshot to the serious version.
+  document.getElementById('headshot-image').addEventListener('click', function () {
+    document.getElementById('headshot_jpg').src = primarySrc;
+    document.getElementById('headshot_avif').src = secondarySrc;
+  });
+</script>
 <h1 class="{% if site.style == 'dark' %}text-white{% endif %} mb-2 f0-light">{% if user.name %}{{ user.name }}{%
   else %}{{ user.login }}{% endif %}</h1>
 <p class="mb-3 f3-light {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">
@@ -37,26 +65,26 @@
       Google Scholar
     </a>
   </div>
-  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
+  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %} hide-in-portrait">
     {% octicon pencil height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Writings %}
     <a href="/writings/" {% if site.style=='dark' %}class="text-white" {% endif %}>
       Writings
     </a>
   </div>
-  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
+  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %} hide-in-portrait">
     {% octicon device-camera height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Photographs %}
     <a href="/photojournalism/" {% if site.style=='dark' %}class="text-white" {% endif %}>
       Photos
     </a>
   </div>
-  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
+  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %} hide-in-portrait">
     {% octicon image height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Arts %}
     <a href="/generative-art/" {% if site.style=='dark' %}class="text-white" {% endif %}>
       Arts
     </a>
   </div>
   {% if user.name %}
-  <div class="{{ metadata_styles }}">
+  <div class="{{ metadata_styles }} hide-in-portrait">
     {% octicon mark-github height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:GitHub %}
     <a href="https://github.com/{{ user.login }}" {% if site.style=='dark' %}class="text-white" {% endif %}>
       @{{ user.login }}
@@ -64,7 +92,7 @@
   </div>
   {% endif %}
   {% if user.email %}
-  <div class="{{ metadata_styles }}">
+  <div class="{{ metadata_styles }} hide-in-portrait">
     {% octicon mail height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:email %}
     <a href="mailto:{{ user.email }}" {% if site.style=='dark' %}class="text-white" {% endif %}>
       {{ user.email }}
@@ -72,7 +100,7 @@
   </div>
   {% endif %}
   {% if user.location %}
-  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
+  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %} hide-in-portrait">
     {% octicon location height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Location %}
     {{ user.location }}
   </div>

@@ -2,7 +2,7 @@
 date: 2022-10-11 20:00:00
 layout: research
 tags: semantic fields, detic, lseg, llms, vlms, clip, neural fields, semantic navigation, sentence-bert 
-pills: open-vocab-robotics, large-pretrained-models
+pills: semantic-scene-representation, large-pretrained-models
 description: CLIP Fields
 title: "CLIP-Fields: Weakly Supervised Semantic Fields for Robotic Memory"
 authors: "Nur Muhammad (Mahi) Shafiullah, Chris Paxton, Lerrel Pinto, Soumith Chintala, Arthur Szlam" 

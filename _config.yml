@@ -19,6 +19,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  -
+    scope:
+      path:            "assets/**/*.pdf"
+    values:
+      sitemap:         false
 
 include: ['_pages', '/.well-known']
 

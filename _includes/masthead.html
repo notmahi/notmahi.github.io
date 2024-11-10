@@ -52,10 +52,10 @@
       <kbd>mahi at cs.nyu.edu</kbd>
     </a>
   </div>
-  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
-    {% octicon home height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home %}
-    <a href="/" {% if site.style=='dark' %}class="text-white" {% endif %}>
-      Home
+  <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %} hide-in-portrait">
+    {% octicon note height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Writings %}
+    <a href="/assets/cv.pdf" {% if site.style=='dark' %}class="text-white" {% endif %}>
+      Curriculam Vitae
     </a>
   </div>
   <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
@@ -71,6 +71,14 @@
       Writings
     </a>
   </div>
+  <!-- <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %}">
+    {% octicon home height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home %}
+    <a href="/" {% if site.style=='dark' %}class="text-white" {% endif %}>
+      Home
+    </a>
+  </div> -->
+
+  <!--
   <div class="{{ metadata_styles }} {% if site.style == 'dark' %}text-white{% endif %} hide-in-portrait">
     {% octicon device-camera height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Photographs %}
     <a href="/photojournalism/" {% if site.style=='dark' %}class="text-white" {% endif %}>
@@ -90,7 +98,7 @@
       @{{ user.login }}
     </a>
   </div>
-  {% endif %}
+  {% endif %} -->
   {% if user.email %}
   <div class="{{ metadata_styles }} hide-in-portrait">
     {% octicon mail height:20 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:email %}

@@ -5,12 +5,13 @@ tags: semantic fields, detic, lseg, llms, vlms, clip, neural fields, semantic na
 pills: semantic-scene-representation, large-pretrained-models
 description: CLIP Fields
 title: "CLIP-Fields: Weakly Supervised Semantic Fields for Robotic Memory"
-authors: "Nur Muhammad (Mahi) Shafiullah, Chris Paxton, Lerrel Pinto, Soumith Chintala, Arthur Szlam" 
+authors: "Nur Muhammad Mahi Shafiullah, Chris Paxton, Lerrel Pinto, Soumith Chintala, Arthur Szlam" 
 paper_url: https://arxiv.org/abs/2210.05663
 code_url: https://github.com/notmahi/clip-fields
 project_site_url: https://mahis.life/clip-fields/
 show_blog_link: false
 show_card: true
+research_type: long-term-memory
 highlight: "Outstanding Paper Award"
 venue: "Workshop on Language and Robot Learning, CoRL 2022; Robotics: Science and Systems (RSS) 2023"
 local_video: assets/images/research/clip_fields.mp4

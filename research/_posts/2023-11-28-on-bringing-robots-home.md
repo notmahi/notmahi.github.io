@@ -5,11 +5,12 @@ tags: real robots, real home, imitation learning, home robotics, learning from d
 pills: generalization-home-robotics, supervised-policy-learning, visual-representation-learning
 description: On Bringing Robots Home
 title: "On Bringing Robots Home"
-authors: "Nur Muhammad (Mahi) Shafiullah, Anant Rai, Haritheja Etukuru, Yiqian Liu, Ishan Misra, Soumith Chintala, Lerrel Pinto"
+authors: "Nur Muhammad Mahi Shafiullah, Anant Rai, Haritheja Etukuru, Yiqian Liu, Ishan Misra, Soumith Chintala, Lerrel Pinto"
 paper_url: https://arxiv.org/abs/2311.16098
 code_url: https://github.com/notmahi/dobb-e
 project_site_url: https://dobb-e.com/
 show_blog_link: false
+research_type: scaling-systems-and-data
 show_card: true
 highlight: "Best Demo Finalist"
 venue: "International Conference in Robotics and Automation (ICRA) EXPO 2024"

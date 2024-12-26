@@ -1,8 +1,31 @@
-<h2 class="{% if site.style=='dark' %}text-white{% endif %} f1-light">Selected Research</h2>
-<p class="f3-light mb-3 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">A few of my recent
-    research projects. You can find a full list of my works on <a
+<h2 class="{% if site.style=='dark' %}text-white{% endif %} f1-light" id="selected-research">Selected Research</h2>
+<p class="f3-light mb-3 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">
+</p>
+<p class="f3-light mb-3 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">
+    My research focuses on understanding the interplay of representation, data, and memory in robotics.
+    Here, you can see a few of my recent research projects. You can find a full list of my works on <a
         href="https://scholar.google.com/citations?hl=en&user=vAOw6aQAAAAJ&view_op=list_works&sortby=pubdate">Google
         Scholar</a>.
+
+    <br>
+    <span class="v-align-middle text-subtitle">
+        Filter by topic:
+    </span>
+    <span class="v-align-middle mr-1 mb-1 topic-pill topic-pill-policy-representations"
+        onclick="filter_by('policy-representations')">Policy learning
+        representations</span>
+    <span class="v-align-middle mr-1 mb-1 topic-pill topic-pill-scaling-systems-and-data"
+        onclick="filter_by('scaling-systems-and-data')">Scaling data for
+        generalization</span>
+    <span class="v-align-middle mr-1 mb-1 topic-pill topic-pill-long-term-memory"
+        onclick="filter_by('long-term-memory')">Semantic robot memory</span>
+    <span class="v-align-middle mr-1 mb-1 topic-pill topic-pill-all-topics" onclick="filter_by('all')">Show all</span>
+    <br>
+    <span hidden id="show-when-filtering">
+        Filtering the projects, showing only <span id="num_filtered"></span> out of <span id="num_total"></span>
+        projects. Click <span class="v-align-middle mr-1 mb-1 topic-pill topic-pill-all-topics"
+            onclick="filter_by('all')">here</span> to show all.
+    </span>
 </p>
 <script type="text/javascript">
     function toggle_visibility(id) {
@@ -41,7 +64,55 @@
         var e = document.getElementById(id);
         e.hidden = !e.hidden;
     }
+
+    function filter_by(topic) {
+        all_topics = ["type-policy-representations", "type-scaling-systems-and-data", "type-long-term-memory"];
+        var elements = document.getElementsByClassName("type-" + topic);
+        var show_when_filtering = document.getElementById("show-when-filtering");
+        var all_elements = document.querySelectorAll("." + all_topics.join(",."));
+        if (topic == "all") {
+            for (var i = 0; i < all_elements.length; i++) {
+                all_elements[i].hidden = false;
+            }
+            show_when_filtering.hidden = true;
+            return;
+        }
+        for (var i = 0; i < all_elements.length; i++) {
+            all_elements[i].hidden = true;
+        }
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].hidden = false;
+        }
+
+        // Update the show when filtering text.
+        var num_filtered = elements.length;
+        var num_total = all_elements.length;
+        var num_filtered_span = document.getElementById("num_filtered");
+        var num_total_span = document.getElementById("num_total");
+        num_filtered_span.innerHTML = num_filtered;
+        num_total_span.innerHTML = num_total;
+        show_when_filtering.hidden = false;
+    }
 </script>
+<style>
+    .type-long-term-memory {
+        border-left: 0.5rem solid #839602;
+    }
+
+    .type-scaling-systems-and-data {
+        border-left: 0.5rem solid #3498db;
+    }
+
+    .type-policy-representations {
+        border-left: 0.5rem solid #D16014;
+    }
+
+    .filter-list {
+        cursor: pointer;
+        size: 1.5rem;
+        padding: 2px;
+    }
+</style>
 <div class="d-sm-flex flex-wrap gutter-condensed mb-4">
     {% for research in site.categories.research limit: 12 %}
     {% if research.show_card %}

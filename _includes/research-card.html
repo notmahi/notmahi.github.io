@@ -1,5 +1,5 @@
 <div
-  class="d-flex flex-wrap height-full lh-condensed text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3">
+  class="d-flex flex-wrap height-full lh-condensed text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3 {% if research.research_type %} type-{{research.research_type}} {% endif %}">
   <div class="col-sm-12 col-md-12 col-lg-4 mb-2" id="video-{{ forloop.index }}">
     {% if research.video %}
     <div>
@@ -30,8 +30,8 @@
         </a>
       </h1>
     </div>
-    {% if research.pills %}
-    {% assign pills = research.pills | split: ", " %}
+    {% if research.research_type %}
+    {% assign pills = research.research_type | split: ", " %}
     <div class="mb-1">
       {% for pill in pills %}
       <span class="v-align-middle mr-1 mb-1 topic-pill topic-pill-{{ pill }}">{{ pill }}</span>

@@ -5,11 +5,12 @@ tags: play data, transformers, behavior transformers, real robot experiments, pl
 pills: supervised-policy-learning
 description: Play to Policy
 title: "From Play to Policy: Conditional Behavior Generation from Uncurated Robot Data"
-authors: "Zichen Jeff Cui, Yibin Wang, Nur Muhammad (Mahi) Shafiullah, Lerrel Pinto"
+authors: "Zichen Jeff Cui, Yibin Wang, Nur Muhammad Mahi Shafiullah, Lerrel Pinto"
 paper_url: https://arxiv.org/abs/2210.10047
 code_url: https://github.com/jeffacce/play-to-policy
 project_site_url: https://play-to-policy.github.io/
 show_blog_link: false
+research_type: policy-representations
 show_card: true
 highlight: "Top 5% (Oral)"
 venue: "International Conference of Learning Representations (ICLR) 2023"

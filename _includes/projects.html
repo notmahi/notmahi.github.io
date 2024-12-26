@@ -1,6 +1,6 @@
 <h2 class="{% if site.style=='dark' %}text-white{% endif %} f1-light">Projects</h2>
 <p class="f3-light mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Code releases from my
-  research projects and open source projects that I've built on my free time.</p>
+  research projects and open source projects that I've contributed to.</p>
 <div class="d-sm-flex flex-wrap gutter-condensed mb-4">
   {% if site.projects.sort_by == 'stars' %}
   {% assign sort_order = 'stargazers_count', 'last' %}
@@ -18,8 +18,8 @@
   {% else %}
   {% assign filtered_repos = site.github.public_repositories | sort: sort_order | reverse %}
   {% endif %}
-
-  {% for repository in filtered_repos | limit: site.projects.limit %}
+  {% assign all_filtered_repos = filtered_repos | concat: site.data.repos | sort: sort_order | reverse %}
+  {% for repository in all_filtered_repos %}
   {% unless site.projects.exclude.projects contains repository.name %}
   <div class="col-sm-6 col-md-12 col-lg-6 col-xl-4 mb-3">
     {% include repo-card.html %}

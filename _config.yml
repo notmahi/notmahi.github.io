@@ -54,7 +54,11 @@ projects:
     - bd-rt-dashboard
     - cv
     - google-scholar-scraper
-    # - d3-books-timeline
+    - d3-book-timeline
+  include:
+    - ok-robot/ok-robot
+    - haritheja-e/robot-utility-models
+    - huggingface/lerobot
 
 social_media:
   # behance: your_username

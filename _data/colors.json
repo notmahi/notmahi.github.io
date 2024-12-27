@@ -499,6 +499,10 @@
         "color": null,
         "url": "https://github.com/trending?l=Groovy-Server-Pages"
     },
+    "G-code": {
+        "color": "#D08CF2",
+        "url": "https://github.com/trending?l=G-code"
+    },
     "Hack": {
         "color": "#878787",
         "url": "https://github.com/trending?l=Hack"

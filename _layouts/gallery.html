@@ -1,177 +1,63 @@
 {% include header.html %}
 
-{% if site.layout == 'stacked' %}
-<div class="container-lg py-6 p-responsive text-center">
-    {% include masthead.html metadata=false %}
+{% include nav.html %}
 
-    <div class="container-md f4 text-left border rounded-2 bg-white p-3 p-sm-5 mt-6">
-        <p class="f3"><a href="/" class="d-flex flex-items-center">{% octicon chevron-left height:16 class:"mr-2
-                v-align-middle" fill:#0366d6 aria-label:Home %}Home</a></p>
-        <h1 class="f00-light lh-condensed mb-5">{{ page.title }}</h1>
-        <div class="content_container">
-            <div class="masonry">
-                <div>
-                    {% for gallery in site.galleries %}
-                    {% if gallery.name == page.title %}
-                    {% for art in gallery.arts %}
-                    <div class="masonry-panel">
-                        <a href="#{{ art.order }}" data-caption-desc="{{ art.description }}">
-                            <img src="{{ site.github.url }}/{{ art.image }}" alt="{{ art.title }}" class="zoom">
-                        </a>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
+<div class="full-width-layout">
+  <a href="{{ site.url }}{{ site.baseurl | append:'/' }}" class="back-link">&larr; Home</a>
 
-            {% for gallery in site.galleries %} {% if gallery.name == page.title %} {% for art in gallery.arts %}
-            <aside class="small-12 columns">
-                <a href="#x" class="small-12 columns lightbox-overlay" id="{{ art.order }}"></a>
-                <div class="lightbox-popup center-text">
-                    <div class="small-12 columns lightbox-nav-wrap">
-                        <div class="small-4 lightbox-nav">
-                            <a class="lightbox-prev" href="#{{ art.order | minus: 1 }}">&#171;</a>
-                        </div>
-                        <div class="small-4 lightbox-nav">
-                            <a class="lightbox-next" href="#{{ art.order | plus: 1 }}">&#187;</a>
-                        </div>
-                        <div class="small-4 lightbox-nav">
-                            <a class="lightbox-popup-close" href="#close">&times;</a>
-                        </div>
-                    </div>
-                    <div class="small-12 columns">
-                        <div class="masonry-panel">
-                            <div class="small-12 columns">
-                                <div class="columns">
-                                    <a href="#{{ art.order | plus: 1 }}"><img class="lightbox-image"
-                                            src="{{ site.github.url }}/{{ art.image }}" alt="{{ art.title }}"></a>{% if
-                                    art.description %}<p tabindex="0" class="lightbox-image-description">{{
-                                        art.description }}<a class="lightbox-close-description">×</a></p>{% endif %}
-                                    <figcaption class="lightbox-caption">{% if art.title %}{{ art.title }}{% endif %} {%
-                                        if
-                                        art.artist %}- By {{ art.artist }}{% endif %}</figcaption>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-            {% endfor %} {% endif %} {% endfor %}
+  {% for gallery in site.galleries %}
+  {% if gallery.name == page.title %}
+    <h1 class="post-title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">{{ page.title }}</h1>
+    {% if gallery.description %}
+    <p style="opacity: 0.75; margin-bottom: 2rem;">{{ gallery.description }}</p>
+    {% endif %}
+  {% endif %}
+  {% endfor %}
 
-
-        </div>
+  <div class="gallery-grid">
+    {% for gallery in site.galleries %}
+    {% if gallery.name == page.title %}
+    {% for art in gallery.arts reversed %}
+    <div class="gallery-image-wrapper">
+      <figure style="margin: 0;">
+        <a itemprop="contentUrl" href="{{ art.image_url }}"
+            data-caption-desc="{{ art.description }}" data-description="{{ art.title }}"
+            class="glightbox">
+          <img itemprop="thumbnail" src="{{ art.image }}" alt="{{ art.title }}"
+              style="width: 100%; display: block; border-radius: 0;">
+        </a>
+        <figcaption itemprop="caption description" hidden
+            class="glightbox-desc">{{ art.title }}</figcaption>
+      </figure>
     </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+  </div>
 </div>
 
-{% else %}
-<div
-    class="d-md-flex flex-md-row-reverse min-height-full {% unless site.style == 'dark' %}border-md-bottom{% endunless %}">
-    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" {% if
-        site.style=='dark' %} style="background-color: #2f363d !important" {% endif %}>
-        <div class="mx-auto" style="max-width: 960px;">
-            <div class="f4 {% if site.style == 'dark' %}text-white{% endif %} mb-6">
-                <div class="f4 {% if site.style == 'dark' %}text-white{% endif %}">
-                    <p class="f3-light"><a href="{{ site.url }}{{ site.baseurl | append:'/' }}"
-                            class="d-flex flex-items-center {% if site.style == 'dark' %}text-white{% endif %}">{%
-                            octicon
-                            chevron-left height:16 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home
-                            %}Home</a></p>
-                    {% for gallery in site.galleries %}
-                    {% if gallery.name == page.title %}
-                    {% if gallery.description %}
-                    <h1 class="f00-light lh-condensed mb-2">{{ page.title }}</h1>
-                    <p class="f3-light mb-5">
-                        <span class="d-flex flex-items-center {% if site.style == 'dark' %}text-white{% endif %}">{{
-                            gallery.description }}</span>
-                    </p>
-                    {% else %}
-                    <h1 class="f00-light lh-condensed mb-5">{{ page.title }}</h1>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                    <div class="content_container">
-                        <div class="masonry">
-                            <div class="clearfix flex-md-row flex-items-center d-flex flex-wrap flex-justify-center {% if site.style == 'dark' %}text-white{% endif %}"
-                                class="gallery">
-                                {% for gallery in site.galleries %}
-                                {% if gallery.name == page.title %}
-                                {% for art in gallery.arts reversed %}
-                                <div
-                                    class="d-flex col-md-12 col-lg-6 col-xl-4 mx-auto mb-4 mr-2 flex-items-center flex-justify-center m-1 p-1 anim-hover-grow">
-                                    <figure>
-                                        <a itemprop="contentUrl" href="{{ art.image_url }}"
-                                            data-caption-desc="{{ art.description }}" data-description="{{ art.title }}"
-                                            class="glightbox d-flex flex-items-center flex-justify-center mx-auto">
-                                            <img itemprop="thumbnail" src="{{ art.image }}" alt="{{ art.title }}"
-                                                class="width-full rounded-2 mx-auto">
-                                        </a>
-                                        <figcaption itemprop="caption description" hidden
-                                            class="invisible glightbox-desc">{{ art.title }}</figcaption>
-                                    </figure>
-                                </div>
-                                {% endfor %}
-                                {% endif %}
-                                {% endfor %}
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div
-        class="flex-self-stretch {% if site.style == 'dark' %}bg-gray-dark{% else %}border-md-right border-gray-light bg-white{% endif %} col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
-        {% include masthead.html metadata=true %}
-    </div>
-</div>
 <script src="/assets/luminous.min.js"></script>
 <link rel="stylesheet" href="/assets/luminous-basic.min.css">
 <script>
     var galleryOpts = {
-        // Whether pressing the arrow keys should move to the next/previous slide.
         arrowNavigation: true,
-        // A callback triggered when the image changes that is passed the image HTML element 
     };
-
     var luminousOpts = {
-        // These options have the same defaults and potential values as the Luminous class.
-        // Prefix for generated element class names (e.g. `my-ns` will
-        // result in classes such as `my-ns-lightbox`. Default `lum-`
-        // prefixed classes will always be added as well.
         namespace: null,
-        // Which attribute to pull the lightbox image source from.
         sourceAttribute: "href",
-        // Captions can be a literal string, or a function that receives the Luminous instance's trigger element as an argument and returns a string. Supports HTML, so use caution when dealing with user input.
         caption: (element) => { return element.getAttribute("data-description") },
-        // The event to listen to on the _trigger_ element: triggers opening.
         openTrigger: "click",
-        // The event to listen to on the _lightbox_ element: triggers closing.
         closeTrigger: "click",
-        // Allow closing by pressing escape.
         closeWithEscape: true,
-        // Automatically close when the page is scrolled.
         closeOnScroll: false,
-        // Disable close button
         showCloseButton: true,
-        // A node to append the lightbox element to.
         appendToNode: document.body,
-        // A selector defining what to append the lightbox element to.
-        // This will take precedence over `appendToNode`.
         appendToSelector: null,
-        // If present (and a function), this will be called
-        // whenever the lightbox is opened.
         onOpen: null,
-        // If present (and a function), this will be called
-        // whenever the lightbox is closed.
         onClose: null,
-        // Add base styles to the page. See the "Theming"
-        // section of README.md for more information.
         injectBaseStyles: true
     };
     new LuminousGallery(document.querySelectorAll(".glightbox"), galleryOpts, luminousOpts);
 </script>
-{% endif %}
 
 {% include footer.html %}

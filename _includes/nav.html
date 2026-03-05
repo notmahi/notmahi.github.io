@@ -1,0 +1,21 @@
+<nav class="header">
+  <div class="header-inner">
+    <a href="/" class="header-name">{{ site.github.owner.name }}</a>
+    <div class="header-nav">
+      <a href="/#selected-research">Research</a>
+      <a href="/#projects">Projects</a>
+      <a href="/writings/">Writings</a>
+      <a href="/assets/CV.pdf">CV</a>
+      <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</nav>
+<script>
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  if (btn) {
+    var theme = document.documentElement.getAttribute('data-theme');
+    btn.textContent = theme === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  }
+})();
+</script>

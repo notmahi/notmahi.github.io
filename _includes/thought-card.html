@@ -1,26 +1,19 @@
-<div
-  class="height-full d-flex container-lg clearfix flex-wrap flex-justify-between text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3">
+<div class="card">
   {% if post.header_image %}
-  <div class="float-right col-sm-12 col-lg-4 p-3">
-    <img src="{{ post.header_image }}" class="width-fit rounded-2" />
+  <div style="float: right; max-width: 30%; margin-left: 1rem; margin-bottom: 0.5rem;">
+    <img src="{{ post.header_image }}" style="width: 100%; border-radius: 8px;" />
   </div>
   {% endif %}
-  <div class="float-right col-sm-12 {% if post.header_image %}col-lg-8{% else %}col-lg-10{% endif %} text-content">
-    <div class="d-flex flex-justify-between flex-items-start mb-1">
-      <h1 class="f1-light mb-1 mt-1">
-        <a href="{{ site.baseurl }}{{ post.url }}">
-          {{ post.title }}
-        </a>
-      </h1>
-    </div>
-    <div class="f4 text-gray mb-2 ws-normal">{{ post.date | date: "%b %d, %Y"}}</div>
-    <div class="f3-light mb-1" id="toggle-read-more-{{ forloop.index }}">
-      <p class="mb-1">
-        {{ post.content | split: '<!--break-->' | first }}
-        {% if post.content contains '<!--break-->' %}
-        <a href="{{ post.url }}">read more</a>
-        {% endif %}
-      </p>
-    </div>
+  <h3 class="thought-card-title" style="font-size: 1.1rem; margin: 0 0 0.35rem 0;">
+    <a href="{{ site.baseurl }}{{ post.url }}" style="text-decoration: none;">
+      {{ post.title }}
+    </a>
+  </h3>
+  <div style="font-size: 0.8rem; opacity: 0.5; margin-bottom: 0.5rem;">{{ post.date | date: "%b %d, %Y"}}</div>
+  <div style="font-size: 0.9rem; line-height: 1.6; opacity: 0.75;">
+    {{ post.content | split: '<!--break-->' | first | strip_html | truncate: 300 }}
+    {% if post.content contains '<!--break-->' %}
+    <a href="{{ post.url }}" style="font-size: 0.85rem;">read more</a>
+    {% endif %}
   </div>
 </div>

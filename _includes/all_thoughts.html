@@ -1,7 +1,5 @@
-<div class="d-sm-flex flex-wrap gutter-condensed mb-4">
+<div style="display: flex; flex-direction: column; gap: 0.75rem;">
   {% for post in site.categories.writings %}
-  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
-    {% include thought-card.html %}
-  </div>
+  {% include thought-card.html %}
   {% endfor %}
 </div>

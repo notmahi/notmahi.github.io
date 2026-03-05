@@ -1,10 +1,7 @@
-<h2 class="{% if site.style == 'dark' %}text-white{% endif %} f1-light">Interests</h2>
-<p class="f3-light mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">Topics that intrigue me,
-  and those I am continously working to learn more about.</p>
-<div class="d-flex flex-wrap gutter-condensed mb-4">
+<h2 class="section-heading">Interests</h2>
+<p style="opacity: 0.75; margin-bottom: 1.5rem;">Topics that intrigue me, and those I am continuously working to learn more about.</p>
+<div class="interests-grid">
   {% for topic in site.topics %}
-  <div class="col-6 col-md-4 col-lg-2 col-xl-2 mb-3">
-    {% include topic-card.html %}
-  </div>
+  {% include topic-card.html %}
   {% endfor %}
 </div>

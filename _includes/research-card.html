@@ -1,76 +1,49 @@
-<div
-  class="d-flex flex-wrap height-full lh-condensed text-left {% if site.style == 'dark' %}box-shadow{% else %}border border-gray-light{% endif %} bg-white rounded-1 p-3 {% if research.research_type %} type-{{research.research_type}} {% endif %}">
-  <div class="col-sm-12 col-md-12 col-lg-4 mb-2" id="video-{{ forloop.index }}">
+<div class="research-grid-card {% if research.research_type %}type-{{ research.research_type }}{% endif %}">
+  <div class="research-grid-card-video" id="video-{{ forloop.index }}">
     {% if research.video %}
-    <div>
-      <video muted autoplay loop playsinline width="100%">
-        <source src="{{ research.video }}" type="video/mp4">
-      </video>
-    </div>
+    <video muted autoplay loop playsinline>
+      <source src="{{ research.video }}" type="video/mp4">
+    </video>
     {% endif %}
     {% if research.local_video %}
-    <div>
-      <video muted autoplay loop playsinline width="100%">
-        <source src="{{ site.baseurl }}{{ research.local_video }}" type="video/mp4">
-      </video>
-    </div>
+    <video muted autoplay loop playsinline>
+      <source src="{{ site.baseurl }}{{ research.local_video }}" type="video/mp4">
+    </video>
     {% endif %}
     {% if research.image %}
-    <div>
-      <img src="{{ research.image }}" height="160" class="zoom">
-    </div>
+    <img src="{{ research.image }}" alt="{{ research.title }}" style="width:100%; height:100%; object-fit:cover;">
     {% endif %}
   </div>
-  <div class="col-sm-12 col-md-12 col-lg-8 pl-lg-3" id="text-block-{{ forloop.index }}">
-    <div class="d-flex flex-justify-between flex-items-start mb-1">
-      <h1 class="f3 text-bold mb-1">
-        <a href={% if research.show_blog_link %}"{{ site.baseurl }}{{ research.url }}"{% else %}"{{ research.paper_url
-          }}"{% endif %}>
-          {{ research.title }}
-        </a>
-      </h1>
-    </div>
-    {% if research.research_type %}
-    {% assign pills = research.research_type | split: ", " %}
-    <div class="mb-1">
-      {% for pill in pills %}
-      <span class="v-align-middle mr-1 mb-1 topic-pill topic-pill-{{ pill }}">{{ pill }}</span>
-      {% endfor %}
-    </div>
-    {% endif %}
+  <div class="research-grid-card-text" id="text-block-{{ forloop.index }}">
+    <h3 class="research-grid-card-title">
+      <a href="{% if research.show_blog_link %}{{ site.baseurl }}{{ research.url }}{% else %}{{ research.paper_url }}{% endif %}">
+        {{ research.title }}
+      </a>
+    </h3>
     {% if research.venue %}
-    {% if research.highlight %}<span class="text-red mb-2 f4-light text-italic"><strong>{{ research.highlight
-        }}</strong>
-    </span><span class="text-gray mb-2 f4-light text-italic">@</span>{%
-    endif
-    %}
-    <span class="text-gray mb-2 f4-light text-italic">{{ research.venue }}</span>
-    {% endif %}
-    <div class="d-flex flex-justify-between flex-items-start mb-1">
-      <p class="f4 text-light ws-normal mb-1">
-        {{ research.authors }}
-      </p>
+    <div style="font-style: italic; font-size: 0.85rem; opacity: 0.7; margin-bottom: 0.25rem;">
+      {% if research.highlight %}<strong style="color: var(--award-color);">{{ research.highlight }}</strong> @ {% endif %}
+      {{ research.venue }}
     </div>
-    <div class="BtnGroup d-block mb-1">
-      <button class="BtnGroup-item btn-outline btn" type="button"
+    {% endif %}
+    {% if research.authors %}
+    <div style="font-size: 0.8rem; opacity: 0.55; margin-bottom: 0.5rem;">{{ research.authors }}</div>
+    {% endif %}
+    <div class="research-actions">
+      <button class="research-action-btn" type="button"
         onclick="toggle_visibility('{{ forloop.index }}')">Expand</button>
       {% if research.paper_url %}
-      <a class="BtnGroup-item  btn-outline btn text-light" href="{{ research.paper_url }}" role="button"
-        target="_blank">Paper</a>
+      <a class="research-action-btn" href="{{ research.paper_url }}" target="_blank">Paper</a>
       {% endif %}
       {% if research.code_url %}
-      <a class="BtnGroup-item  btn-outline btn" href="{{ research.code_url }}" role="button" target="_blank">Code</a>
+      <a class="research-action-btn" href="{{ research.code_url }}" target="_blank">Code</a>
       {% endif %}
       {% if research.project_site_url %}
-      <a class="BtnGroup-item  btn-outline btn" href="{{ research.project_site_url }}" role="button" target="_blank">
-        Project Site
-      </a>
+      <a class="research-action-btn" href="{{ research.project_site_url }}" target="_blank">Project Site</a>
       {% endif %}
     </div>
-    <div hidden class="lh-default mb-1 ws-normal f4" id="toggle-abstract-{{ forloop.index }}">
-      <p>
-        {{ research.content }}
-      </p>
+    <div hidden id="toggle-abstract-{{ forloop.index }}" style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 1.6; opacity: 0.75;">
+      {{ research.content }}
     </div>
   </div>
 </div>

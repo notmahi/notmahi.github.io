@@ -1,73 +1,55 @@
 {% include header.html %}
 
-{% if site.layout == 'stacked' %}
-<div class="container-lg py-6 p-responsive text-center">
+{% include nav.html %}
+
+<div class="fade-in fade-in-1">
   {% include masthead.html metadata=true %}
+</div>
 
-  <div class="{% if site.style=='dark' %}text-white{% endif %} f2-light">
+<div class="editorial-column fade-in fade-in-2">
+  {% unless content == "" %}
+  <div style="margin-bottom: 2rem;">
     {{ content }}
-  </div>
-
-  <div class="my-6">
-    {% include projects.html %}
-  </div>
-
-  {% if site.topics %}
-  <div class="my-6">
-    {% include interests.html %}
-  </div>
-  {% endif %}
-
-  {% unless posts_total == 0 %}
-  <div class="my-6">
-    {% include thoughts.html %}
   </div>
   {% endunless %}
 
-  {% if site.quotes %}
-  <div class="my-6">
-    {% include goodreads_quotes.html %}
-  </div>
-  {% endif %}
+  {% include news.html %}
 </div>
-{% else %}
-<div class="d-md-flex min-height-full {% unless site.style == 'dark' %}border-md-bottom{% endunless %}">
-  <div id="left"
-    class="flex-self-stretch {% if site.style == 'dark' %}bg-gray-dark{% else %}border-md-right border-gray-light bg-white{% endif %} col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
-    {% include masthead.html metadata=true %}
-  </div>
 
-  <div id="right" class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" {% if
-    site.style=='dark' %}style="background-color: #2f363d !important" {% endif %}>
-    <div class="mx-auto" style="max-width: 900px;">
-      {% unless content == "" %}
-      <div class="f3-light {% if site.style == 'dark' %}text-white{% endif %} mb-6">
-        {{ content }}
-      </div>
-      {% endunless %}
+<div class="section-rule"></div>
 
-      {% include news.html %}
-
-      {% include research.html %}
-
-      {% include projects.html %}
-
-      {% unless posts_total == 0 %}
-      {% include thoughts.html %}
-      {% endunless %}
-
-      {% if site.topics %}
-      {% include interests.html %}
-      {% endif %}
-
-      {% if site.quotes %}
-      {% include goodreads_quotes.html %}
-      {% endif %}
-    </div>
-  </div>
+<div class="research-breakout fade-in fade-in-3">
+  {% include research.html %}
 </div>
+
+<div class="section-rule"></div>
+
+<div class="editorial-column fade-in fade-in-4" id="projects">
+  {% include projects.html %}
+</div>
+
+<div class="section-rule"></div>
+
+{% unless posts_total == 0 %}
+<div class="editorial-column fade-in fade-in-5">
+  {% include thoughts.html %}
+</div>
+
+<div class="section-rule"></div>
+{% endunless %}
+
+{% if site.topics %}
+<div class="editorial-column fade-in fade-in-6">
+  {% include interests.html %}
+</div>
+
+<div class="section-rule"></div>
 {% endif %}
 
-
+{% if site.quotes %}
+<div class="editorial-column fade-in fade-in-7">
+  {% include goodreads_quotes.html %}
+</div>
+{% endif %}
 
 {% include footer.html %}

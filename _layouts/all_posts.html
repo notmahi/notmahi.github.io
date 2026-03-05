@@ -1,38 +1,25 @@
 {% include header.html %}
 
-{% if site.layout == 'stacked' %}
-<div class="container-lg py-6 p-responsive text-center">
-    {% include masthead.html metadata=true %}
+{% include nav.html %}
 
-</div>
-{% else %}
-<div
-    class="d-md-flex flex-md-row-reverse min-height-full {% unless site.style == 'dark' %}border-md-bottom{% endunless %}">
-    <div class="col-md-7 col-lg-8 col-xl-9 px-4 py-6 px-lg-7 border-top border-md-top-0 bg-gray-light" {% if
-        site.style=='dark' %}style="background-color: #2f363d !important" {% endif %}>
-        <div class="mx-auto" style="max-width: 900px;">
-            <p class="f3-light"><a href="{{ site.url }}{{ site.baseurl | append:'/' }}"
-                    class="d-flex flex-items-center {% if site.style == 'dark' %}text-white{% endif %}">{%
-                    octicon
-                    chevron-left height:16 class:"mr-2 v-align-middle" fill:{{ icon_color }} aria-label:Home
-                    %}Home</a></p>
-            <h2 class="{% if site.style=='dark' %}text-white{% endif %} f00-light mb-4">Writings</h2>
-            {% unless content == "" %}
-            <p class="f3-light mb-4 {% if site.style == 'dark' %}text-white{% else %}text-gray{% endif %}">
-                {{ content }}
-            </p>
-            {% endunless %}
+<div class="full-width-layout">
+  <a href="{{ site.url }}{{ site.baseurl | append:'/' }}" class="back-link">&larr; Home</a>
 
-            {% unless posts_total == 0 %}
-            {% include all_thoughts.html %}
-            {% endunless %}
-        </div>
-    </div>
-    <div
-        class="flex-self-stretch {% if site.style == 'dark' %}bg-gray-dark{% else %}border-md-right border-gray-light bg-white{% endif %} col-md-5 col-lg-4 col-xl-3 px-4 px-md-6 px-lg-7 py-6">
-        {% include masthead.html metadata=true %}
-    </div>
+  <h2 class="section-heading" style="font-size: 2rem; margin-bottom: 1rem;">Writings</h2>
+
+  {% unless content == "" %}
+  <p style="opacity: 0.75; margin-bottom: 1.5rem;">
+    {{ content }}
+  </p>
+  {% endunless %}
+
+  {% unless posts_total == 0 %}
+  <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+    {% for post in site.categories.writings %}
+    {% include thought-card.html %}
+    {% endfor %}
+  </div>
+  {% endunless %}
 </div>
-{% endif %}
 
 {% include footer.html %}

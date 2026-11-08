@@ -108,7 +108,7 @@
     </div>
     <div>
       <h3 class="featured-card-title">
-        <a href="{% if featured_post.show_blog_link %}{{ site.baseurl }}{{ featured_post.url }}{% else %}{{ featured_post.paper_url }}{% endif %}">
+        <a href="{% if featured_post.show_blog_link %}{{ site.baseurl }}{{ featured_post.url }}{% elsif featured_post.paper_url %}{{ featured_post.paper_url }}{% else %}{{ featured_post.link_url }}{% endif %}">
           {{ featured_post.title }}
         </a>
         {% if featured_post.highlight %}<span class="award-badge">{{ featured_post.highlight }}</span>{% endif %}

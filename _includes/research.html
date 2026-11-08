@@ -7,14 +7,14 @@
 
     <br>
     <span style="opacity: 0.6; font-size: 0.9rem;">Filter by topic:</span>
+    <span class="topic-pill topic-pill-imperfect-information"
+        onclick="filter_by('imperfect-information')">Learning from imperfect information</span>
     <span class="topic-pill topic-pill-policy-representations"
         onclick="filter_by('policy-representations')">Policy learning representations</span>
     <span class="topic-pill topic-pill-scaling-systems-and-data"
         onclick="filter_by('scaling-systems-and-data')">Scaling data for generalization</span>
     <span class="topic-pill topic-pill-long-term-memory"
         onclick="filter_by('long-term-memory')">Semantic robot memory</span>
-    <span class="topic-pill topic-pill-imperfect-information"
-        onclick="filter_by('imperfect-information')">Learning from imperfect information</span>
     <span class="topic-pill topic-pill-all-topics" onclick="filter_by('all')">Show all</span>
     <br>
     <span hidden id="show-when-filtering">
@@ -108,7 +108,7 @@
     </div>
     <div>
       <h3 class="featured-card-title">
-        <a href="{% if featured_post.show_blog_link %}{{ site.baseurl }}{{ featured_post.url }}{% else %}{{ featured_post.paper_url }}{% endif %}">
+        <a href="{% if featured_post.show_blog_link %}{{ site.baseurl }}{{ featured_post.url }}{% elsif featured_post.paper_url %}{{ featured_post.paper_url }}{% else %}{{ featured_post.link_url }}{% endif %}">
           {{ featured_post.title }}
         </a>
         {% if featured_post.highlight %}<span class="award-badge">{{ featured_post.highlight }}</span>{% endif %}

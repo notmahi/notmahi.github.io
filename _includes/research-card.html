@@ -16,7 +16,7 @@
   </div>
   <div class="research-grid-card-text" id="text-block-{{ forloop.index }}">
     <h3 class="research-grid-card-title">
-      <a href="{% if research.show_blog_link %}{{ site.baseurl }}{{ research.url }}{% else %}{{ research.paper_url }}{% endif %}">
+      <a href="{% if research.show_blog_link %}{{ site.baseurl }}{{ research.url }}{% elsif research.paper_url %}{{ research.paper_url }}{% else %}{{ research.link_url }}{% endif %}">
         {{ research.title }}
       </a>
     </h3>

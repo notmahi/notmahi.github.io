@@ -2,7 +2,7 @@ name: Refresh
 
 on:
   schedule:
-    - cron:  '0 4 * * 0/3' # At 04:00 on every 3rd day-of-week from Sunday through Sunday.
+    - cron:  '0 4 * * 0' # Weekly, Sundays at 04:00 UTC (was Sun/Wed/Sat).
 
 jobs:
   refresh:

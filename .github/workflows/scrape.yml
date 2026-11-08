@@ -2,9 +2,12 @@ name: Refresh with latest external repo data.
 
 on:
   push:
+    paths:
+      - "_data/repos.json"
+      - "refresh_external_repos.py"
   workflow_dispatch:
   schedule:
-  - cron: '6 0,6,12,18 * * *'
+  - cron: '6 6 * * *' # Once a day at 06:06 UTC (was 4x daily).
 
 jobs:
   scheduled:
@@ -22,4 +25,3 @@ jobs:
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
         git push
-

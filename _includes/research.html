@@ -13,6 +13,8 @@
         onclick="filter_by('scaling-systems-and-data')">Scaling data for generalization</span>
     <span class="topic-pill topic-pill-long-term-memory"
         onclick="filter_by('long-term-memory')">Semantic robot memory</span>
+    <span class="topic-pill topic-pill-imperfect-information"
+        onclick="filter_by('imperfect-information')">Learning from imperfect information</span>
     <span class="topic-pill topic-pill-all-topics" onclick="filter_by('all')">Show all</span>
     <br>
     <span hidden id="show-when-filtering">
@@ -51,7 +53,7 @@
     }
 
     function filter_by(topic) {
-        all_topics = ["type-policy-representations", "type-scaling-systems-and-data", "type-long-term-memory"];
+        all_topics = ["type-policy-representations", "type-scaling-systems-and-data", "type-long-term-memory", "type-imperfect-information"];
         var elements = document.getElementsByClassName("type-" + topic);
         var show_when_filtering = document.getElementById("show-when-filtering");
         var all_elements = document.querySelectorAll("." + all_topics.join(",."));
@@ -137,7 +139,7 @@
 {% endif %}
 
 <div class="research-grid-2col">
-    {% for research in site.categories.research limit: 12 %}
+    {% for research in site.categories.research limit: 14 %}
     {% if research.show_card %}
     {% if research == featured_post %}{% continue %}{% endif %}
     {% include research-card.html %}

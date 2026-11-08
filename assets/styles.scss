@@ -68,12 +68,14 @@
   --topic-pill-policy-representations: #e8976b;
   --topic-pill-long-term-memory: #6bc5a0;
   --topic-pill-scaling-systems-and-data: #6aaad4;
+  --topic-pill-imperfect-information: #b39ddb;
   --topic-pill-large-pretrained-models: #c4a46e;
 
   /* Type borders */
   --type-border-policy-representations: #e8976b;
   --type-border-long-term-memory: #6bc5a0;
   --type-border-scaling-systems-and-data: #6aaad4;
+  --type-border-imperfect-information: #b39ddb;
 
   /* Header */
   --header-bg: rgba(28, 31, 38, 0.85);
@@ -145,11 +147,13 @@
   --topic-pill-policy-representations: #b06b30;
   --topic-pill-long-term-memory: #5e8a50;
   --topic-pill-scaling-systems-and-data: #3a6c8b;
+  --topic-pill-imperfect-information: #6e5494;
   --topic-pill-large-pretrained-models: #8a7a6a;
 
   --type-border-policy-representations: #b06b30;
   --type-border-long-term-memory: #5e8a50;
   --type-border-scaling-systems-and-data: #3a6c8b;
+  --type-border-imperfect-information: #6e5494;
 
   --header-bg: rgba(250, 247, 242, 0.85);
   --header-border: rgba(26, 24, 21, 0.08);
@@ -749,6 +753,12 @@ mark {
   background: rgba(106, 170, 212, 0.1);
 }
 
+.topic-pill-imperfect-information {
+  color: var(--topic-pill-imperfect-information);
+  border-color: var(--topic-pill-imperfect-information);
+  background: rgba(179, 157, 219, 0.1);
+}
+
 .topic-pill-large-pretrained-models {
   color: var(--topic-pill-large-pretrained-models);
   border-color: var(--topic-pill-large-pretrained-models);
@@ -770,6 +780,9 @@ mark {
 [data-theme="light"] .topic-pill-scaling-systems-and-data {
   background: rgba(58, 108, 139, 0.1);
 }
+[data-theme="light"] .topic-pill-imperfect-information {
+  background: rgba(110, 84, 148, 0.1);
+}
 [data-theme="light"] .topic-pill-large-pretrained-models {
   background: rgba(138, 122, 106, 0.1);
 }
@@ -782,6 +795,11 @@ mark {
 
 .type-scaling-systems-and-data {
   border-left: 3px solid var(--type-border-scaling-systems-and-data);
+  padding-left: 0.75rem;
+}
+
+.type-imperfect-information {
+  border-left: 3px solid var(--type-border-imperfect-information);
   padding-left: 0.75rem;
 }
 

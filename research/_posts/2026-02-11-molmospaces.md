@@ -12,6 +12,7 @@ project_site_url: https://allenai.org/blog/molmospaces
 show_blog_link: false
 research_type: scaling-systems-and-data
 show_card: true
+venue: "Robotics: Science and Systems (RSS) 2026"
 local_video: assets/images/research/molmospaces.mp4
 ---
 
